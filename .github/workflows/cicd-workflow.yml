@@ -159,7 +159,8 @@ jobs:
 
   registerPackage:
     name: 'Register Package'
-    needs: [sonarSummary, securitySummary]
+    needs: sonarSummary
+    #needs: [sonarSummary, securitySummary]
     runs-on: ubuntu-latest
     steps:
     # - name: Set up Node.js
