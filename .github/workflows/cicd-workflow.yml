@@ -126,36 +126,36 @@ jobs:
           # Sonar Project Key
           sonar-project-key: ${{ secrets.SONAR_PROJECT_KEY }}
 
-  securitySummary:
-    name: 'Veracode Scan Summary'
-    needs: sonarSummary
-    runs-on: ubuntu-latest
-    steps:
-    # - name: Set up Node.js
-    #   uses: actions/setup-node@v3
-    #   with:
-    #     node-version: '20'    
-    - name: ServiceNow DevOps Security Results
-    # You may pin to the exact commit or the version.
-    # uses: ServiceNow/servicenow-devops-security-result@26f3416768ffd3991f1a14c0304ba03075724929
-      uses: ServiceNow/servicenow-devops-security-result@dev
-      with:
-        # ServiceNow Instance URL
-        instance-url: ${{ secrets.SN_INSTANCE_URL }}
-        # Devops Integration User Name
-        #devops-integration-user-name: # optional
-        # Devops Integration User Password
-        #devops-integration-user-password: # optional
-        # Devops Integration Token
-        devops-integration-token: ${{ secrets.SN_DEVOPS_TOKEN }} # optional
-        # Github Context
-        context-github: ${{ toJSON(github) }}
-        # Display Name of the Job
-        job-name: 'Veracode Scan Summary'
-        # Security Results Attributes: For more information on defining the security attributes, View full Marketplace listing link above
-        security-result-attributes: '{ "scanner": "Veracode", "applicationName": "PetStoreAPI-Github", "securityToolId": "" }'
-        # Orchestration Tool Id
-        tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
+  # securitySummary:
+  #   name: 'Veracode Scan Summary'
+  #   needs: sonarSummary
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   # - name: Set up Node.js
+  #   #   uses: actions/setup-node@v3
+  #   #   with:
+  #   #     node-version: '20'    
+  #   - name: ServiceNow DevOps Security Results
+  #   # You may pin to the exact commit or the version.
+  #   # uses: ServiceNow/servicenow-devops-security-result@26f3416768ffd3991f1a14c0304ba03075724929
+  #     uses: ServiceNow/servicenow-devops-security-result@dev
+  #     with:
+  #       # ServiceNow Instance URL
+  #       instance-url: ${{ secrets.SN_INSTANCE_URL }}
+  #       # Devops Integration User Name
+  #       #devops-integration-user-name: # optional
+  #       # Devops Integration User Password
+  #       #devops-integration-user-password: # optional
+  #       # Devops Integration Token
+  #       devops-integration-token: ${{ secrets.SN_DEVOPS_TOKEN }} # optional
+  #       # Github Context
+  #       context-github: ${{ toJSON(github) }}
+  #       # Display Name of the Job
+  #       job-name: 'Veracode Scan Summary'
+  #       # Security Results Attributes: For more information on defining the security attributes, View full Marketplace listing link above
+  #       security-result-attributes: '{ "scanner": "Veracode", "applicationName": "PetStoreAPI-Github", "securityToolId": "" }'
+  #       # Orchestration Tool Id
+  #       tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
 
   registerPackage:
     name: 'Register Package'
