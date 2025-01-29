@@ -162,7 +162,7 @@ jobs:
   #         job-name: 'Security Scan'
   #         security-result-attributes: '{ "scanner": "${{ secrets.SCANNER_NAME }}", "applicationName": "${{ secrets.VULNERABILITY_APPLICATION_NAME }}", "securityToolId": "<securityToolSysId>" }'
 
-  # registerPackage:
+  ## registerPackage:
   #   name: 'Register Package'
   #   needs: sonarScan
   #   runs-on: ubuntu-latest
