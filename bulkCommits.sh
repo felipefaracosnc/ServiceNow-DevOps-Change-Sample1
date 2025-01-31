@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Set the number of commits you want to make
-num_commits=5
+num_commits=200
 
 # Loop through the specified number of commits
 for i in $(seq 1 $num_commits); do
