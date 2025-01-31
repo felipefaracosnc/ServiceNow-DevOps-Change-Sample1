@@ -13,6 +13,6 @@ for i in $(seq 1 $num_commits); do
 
   # Commit the changes with a message
   git commit -m "Commit $i"
-
-  git push
 done
+
+git push
