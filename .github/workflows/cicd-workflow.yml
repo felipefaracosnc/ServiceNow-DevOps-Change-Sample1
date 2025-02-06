@@ -157,45 +157,45 @@ jobs:
   #       # Orchestration Tool Id
   #       tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
 
-  registerPackage:
-    name: 'Register Package'
-    needs: registerArtifact #sonarSummary
-    #needs: [sonarSummary, securitySummary]
-    runs-on: ubuntu-latest
-    steps:
-    # - name: Set up Node.js
-    #   uses: actions/setup-node@v3
-    #   with:
-    #     node-version: '20'
-    - name: ServiceNow DevOps Register Package
-    # You may pin to the exact commit or the version.           
-      uses: ServiceNow/servicenow-devops-register-package@dev
-      with:
-          # Devops Integration Token
-          devops-integration-token: ${{ secrets.SN_DEVOPS_TOKEN }}
-          # ServiceNow Instance URL
-          instance-url: ${{ secrets.SN_INSTANCE_URL }}
-          # Orchestration Tool Id of the tool created in ServiceNow
-          tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
-          # Github Context
-          context-github: ${{ toJSON(github) }}
-          # List of Artifacts in JSON format
-          artifacts: '[
-              {
-                  "name": "app-devops-cicd.jar",
-                  "version": "1.${{ github.run_number }}",
-                  "semanticVersion": "1.${{ github.run_number }}.0",
-                  "repositoryName": "${{ github.repository }}"
-              }
-          ]'
-          # Name of the Package that contains list of artifacts
-          package-name: 'app-devops-change-velocity-cicd.war'
-          # Display Name of Job
-          job-name: 'Register Package'
+  # registerPackage:
+  #   name: 'Register Package'
+  #   needs: registerArtifact #sonarSummary
+  #   #needs: [sonarSummary, securitySummary]
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   # - name: Set up Node.js
+  #   #   uses: actions/setup-node@v3
+  #   #   with:
+  #   #     node-version: '20'
+  #   - name: ServiceNow DevOps Register Package
+  #   # You may pin to the exact commit or the version.           
+  #     uses: ServiceNow/servicenow-devops-register-package@dev
+  #     with:
+  #         # Devops Integration Token
+  #         devops-integration-token: ${{ secrets.SN_DEVOPS_TOKEN }}
+  #         # ServiceNow Instance URL
+  #         instance-url: ${{ secrets.SN_INSTANCE_URL }}
+  #         # Orchestration Tool Id of the tool created in ServiceNow
+  #         tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
+  #         # Github Context
+  #         context-github: ${{ toJSON(github) }}
+  #         # List of Artifacts in JSON format
+  #         artifacts: '[
+  #             {
+  #                 "name": "app-devops-cicd.jar",
+  #                 "version": "1.${{ github.run_number }}",
+  #                 "semanticVersion": "1.${{ github.run_number }}.0",
+  #                 "repositoryName": "${{ github.repository }}"
+  #             }
+  #         ]'
+  #         # Name of the Package that contains list of artifacts
+  #         package-name: 'app-devops-change-velocity-cicd.war'
+  #         # Display Name of Job
+  #         job-name: 'Register Package'
             
   change:
     # jobs that must complete successfully before this job will run
-    needs: registerPackage
+    needs: registerArtifact #registerPackage
     # type of machine to run the job on
     runs-on: ubuntu-latest
     name: 'ServiceNow DevOps Change Automation'
