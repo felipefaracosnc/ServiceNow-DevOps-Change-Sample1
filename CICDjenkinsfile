@@ -122,9 +122,11 @@ pipeline {
 					"end_date": "" // This is the planned end date.
 				}
 			    }''')
+				/*
 				script {
 					sh 'exit 1'
 				}
+				*/
 			}
 		}
 
