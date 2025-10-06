@@ -56,14 +56,13 @@ pipeline {
 			}     
 		}
 
-		
+/*		
 		stage('Sonar Scan') {
 			steps {
 				sonarSummaries()
 			}
 		}
-
-/*		
+		
 		stage('Security Scan - Veracode') {
 			steps {
 				echo "${env.VERACODE_APPLICATION_NAME}"
